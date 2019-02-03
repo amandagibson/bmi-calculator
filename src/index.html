@@ -14,34 +14,34 @@
             <input type="text" id="weight-in-kgs" placeholder="Weight">
             <input type="text" id="height-in-cm" placeholder="Height">
         </div>
-
+        
         <button type="submit" value="Calculate"> Calculate </button>
     </form>
     <div>
         <span id="display_value"></span>
         <span id="display_message"></span>
     </div>
-
+    
     <script type="text/javascript">
-
+        
         const global = {}
-
+        
         global.calculateForm = document.querySelector('#calculate');
         global.displayValueElement = document.querySelector('#display_value');
         global.displayMessageElement = document.querySelector('#display_message');
-
+        
         document.addEventListener('DOMContentLoaded', () => {
-
+            
             global.calculateForm.addEventListener('submit', event => {
                 event.preventDefault();
                 calculateBMI()
-                    .then(person => {
-                        global.displayValueElement.innerHTML = `Your BMI is ${person.bmiValue}`;
-                        global.displayMessageElement.innerHTML = `and you are ${person.bmiMessage}`;
-                    })
+                .then(person => {
+                    global.displayValueElement.innerHTML = `Your BMI is ${person.bmiValue}`;
+                    global.displayMessageElement.innerHTML = `and you are ${person.bmiMessage}`;
+                })
             })
         });
-
+        
         const calculateBMI = () => {
             return new Promise(resolve => {
                 let w = parseFloat(document.getElementById('weight-in-kgs').value);
@@ -54,9 +54,9 @@
                 resolve(person);
             })
         };
-</script>
-
-
+    </script>
+    
+    
 </body>
 
 </html>
